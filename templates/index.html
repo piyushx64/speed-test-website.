@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080d1b">
+<meta name="description" content="Test your internet download speed, upload speed, latency and jitter.">
+<title>PulseSpeed — Internet Speed Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar"><a class="brand" href="/"><span class="brand-mark">⌁</span>pulse<span class="light">speed</span></a><span class="status"><i></i> Browser-based test</span></header>
+<main class="shell">
+<section class="intro"><p class="eyebrow">YOUR CONNECTION, DECODED</p><h1>How fast is your <em>internet?</em></h1><p class="subtitle">A quick, clear look at the connection you're really getting.</p></section>
+<section class="panel">
+<div class="panel-head"><div class="server"><span class="server-icon">⌁</span><div><small>TEST SERVER</small><strong>Current website server</strong><span>HTTP measurement endpoint</span></div></div><span class="pill">● Secure connection recommended</span></div>
+<div class="test-area">
+<div class="gauge-wrap">
+<svg viewBox="0 0 300 190" class="gauge" aria-label="Speed gauge">
+<path class="track" d="M 30 165 A 120 120 0 0 1 270 165"/>
+<path id="progress" class="progress" d="M 30 165 A 120 120 0 0 1 270 165"/>
+<line id="needle" x1="150" y1="165" x2="150" y2="58" class="needle"/>
+<circle cx="150" cy="165" r="7" class="hub"/>
+<text x="30" y="185">0</text><text x="270" y="185" text-anchor="end">200+</text>
+</svg>
+<div class="readout"><span id="speed">—</span><small>Mbps</small></div><div id="phase" class="phase">READY WHEN YOU ARE</div>
+</div>
+<button id="start" class="start"><span id="play">▶</span><span id="button-text">Start test</span></button>
+<p class="privacy">✦ No account needed. Results stay in this browser.</p>
+</div>
+<div class="metrics">
+<article><div class="metric-title"><b class="icon ping">↔</b>Ping <small>LATENCY</small></div><div class="value"><span id="ping">—</span><small>ms</small></div><p>Response time</p></article>
+<article><div class="metric-title"><b class="icon jitter">〰</b>Jitter <small>VARIATION</small></div><div class="value"><span id="jitter">—</span><small>ms</small></div><p>Latency consistency</p></article>
+<article><div class="metric-title"><b class="icon down">↓</b>Download <small>RECEIVE</small></div><div class="value"><span id="download">—</span><small>Mbps</small></div><p>Getting data from server</p></article>
+<article><div class="metric-title"><b class="icon up">↑</b>Upload <small>SEND</small></div><div class="value"><span id="upload">—</span><small>Mbps</small></div><p>Sending data to server</p></article>
+</div><div id="error" class="error" role="alert" hidden></div>
+</section>
+<section class="extras"><div class="tip"><b>✧</b><div><strong>For the fairest result</strong><p>Pause downloads and VPNs, and run the test a couple of times.</p></div></div><div class="history"><div class="history-head"><strong>Recent tests</strong><button id="clear">Clear</button></div><div id="history-list"><span class="empty">Your completed tests will appear here.</span></div></div></section>
+<footer><strong>PulseSpeed</strong><span>Results vary with server load, Wi-Fi, and network conditions.</span></footer>
+</main><script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</body></html>

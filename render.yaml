@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: speed-test-website
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --workers 2 --threads 4 --timeout 60
+    healthCheckPath: /api/ping
+    envVars:
+      - key: RATELIMIT_STORAGE_URI
+        value: memory://
